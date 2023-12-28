@@ -10,5 +10,5 @@ class DisplayFeed(ListView):
 
 class ViewPost(DetailView):
     model = models.Post
-    template_name = 'feed/view_post.html'
+    template_name = 'post/post_viewer.html'
     context_object_name = 'post'

@@ -12,7 +12,14 @@
     
         <p>{{ post.created_at | date }}</p>
     
-        <a href="{% url 'feed:all' %}">Go back to home</a><hr>
+        <a href="{% url 'feed:all' %}">Go back to home</a>
+
+        {% if user.username == post.author.username %}
+        <a href="{% url 'post:edit' post.pk %}">Edit</a>
+        <a href="{% url 'post:delete' post.pk %}">Delete</a>
+        {% endif %}
+        
+        <hr>
 
         <h4>{{ post.content }}</h4>
     </div>

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Create Post
+    {{ request.resolver_match.url_name | title }} Post
 {% endblock %}
 
 {% block body %}
 
-    <h1> Create a post as {{ user.username | title }} </h1>
+    <h1> {{ request.resolver_match.url_name | title }} Post </h1>
 
     <form action="" method = 'POST'>
         {{ form.as_p }}
