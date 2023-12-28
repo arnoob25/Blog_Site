@@ -19,3 +19,10 @@ class CreatePost(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('feed:post', kwargs = {'pk':self.object.pk})
     
+class EditPost(LoginRequiredMixin, UpdateView):
+    model = models.Post
+    template_name = 'post/post_editor.html'
+    fields = ['title', 'content']
+
+    def get_success_url(self):
+        return reverse('feed:post', kwargs = {'pk':self.object.pk})
