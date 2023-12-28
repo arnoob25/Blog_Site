@@ -6,6 +6,13 @@
 
 {% block body %}
 
-    <h1> Create a post </h1>
+    <h1> Create a post as {{ user.username | title }} </h1>
+
+    <form action="" method = 'POST'>
+        {{ form.as_p }}
+        
+        {% csrf_token %}
+        <input type = 'submit' value = 'submit'>
+    </form>
 
 {% endblock %}

@@ -130,7 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Settings override
 
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
+LOGIN_URL = 'user_auth:login'
+LOGOUT_URL = 'user_auth:logout'
 LOGIN_REDIRECT_URL = 'feed:all'
 LOGOUT_REDIRECT_URL = 'feed:all'

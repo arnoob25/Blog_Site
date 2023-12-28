@@ -1,6 +1,14 @@
 from django.shortcuts import render
+from post import models
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 
-def displayFeed(request):
-    return render(request, 'feed/feed.html', {})
+class DisplayFeed(ListView):
+    model = models.Post
+    template_name = 'feed/feed.html'
+
+class ViewPost(DetailView):
+    model = models.Post
+    template_name = 'feed/view_post.html'
+    context_object_name = 'post'

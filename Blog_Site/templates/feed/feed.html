@@ -7,13 +7,17 @@
 
 {% block body %}
 
-  <h1>This is the Feed</h1>
+  <h1>Hello {{ user.username | title }} </h1>
 
   {% if user.is_authenticated %}
     <form action="{% url 'user_auth:logout' %}" method="POST">
       {% csrf_token %}
       <button type="submit">Logout</button>
     </form>
+    
+    <br>
+    
+    <a href="{% url 'post:create' %}">Create a post</a>
 
   {% else %}
     <a href="{% url 'user_auth:signup' %}">Sign Up</a> or
@@ -21,5 +25,19 @@
     
 
   {% endif %}
+
+  <br>
+
+  {% for data in object_list %}
+    <hr>
+    <div>
+      <a href = "{% url 'feed:post' data.pk %}">
+        <p>{{ data.title | title }}</p>
+      </a>
+      <p>By {{ data.author | title }}</p>
+    </div>
+  {% endfor %}
+  
+  <hr>
 
 {% endblock %}
