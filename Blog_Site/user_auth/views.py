@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 class SignUp(CreateView):
     model = get_user_model()
-    template_name = 'auth.html'
+    template_name = 'user_auth/auth.html'
     form_class = UserCreationForm
     success_url = reverse_lazy('feed')
 
@@ -32,9 +32,8 @@ class SignUp(CreateView):
         return response
 
 class Login(LoginView):
-    template_name = 'auth.html'
+    template_name = 'user_auth/auth.html'
     success_url = reverse_lazy('feed')
 
 class Logout(LogoutView):
-    template_name = 'auth.html'
     next_page = 'feed'
