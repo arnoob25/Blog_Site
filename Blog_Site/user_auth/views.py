@@ -3,8 +3,6 @@ from django.views.generic import CreateView
 from django.contrib.auth import get_user_model, authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.decorators import login_required
-
 
 # Create your views here.
 
@@ -12,7 +10,7 @@ class SignUp(CreateView):
     model = get_user_model()
     template_name = 'user_auth/auth.html'
     form_class = UserCreationForm
-    success_url = reverse_lazy('feed')
+    success_url = reverse_lazy('feed:all')
 
     def form_valid(self, form):
         # Save the user first
@@ -33,7 +31,7 @@ class SignUp(CreateView):
 
 class Login(LoginView):
     template_name = 'user_auth/auth.html'
-    success_url = reverse_lazy('feed')
+    pass
 
 class Logout(LogoutView):
-    next_page = 'feed'
+    pass

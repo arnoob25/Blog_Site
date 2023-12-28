@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from user_auth import views # remove this
+# set url patterns here
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('feed.urls')),
     path('auth/', include('user_auth.urls')),
+    path('', include('feed.urls')),
+    path('user_post/', include('post.urls')),
 ]
